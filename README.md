@@ -9,8 +9,12 @@
 | nickname  | string     | null: false |
 | email     | string     | null: false |
 | password  | string     | null: false |
-| name      | string     | null: false |
-| birthday  | integer    | null: false |
+| first_name| string     | null: false |
+| family_name| string     | null: false |
+| first_huri| string     | null: false |
+| family_huri| string     | null: false |
+
+| birthday  | date       | null: false |
 
 ### Association
 
@@ -26,21 +30,21 @@
 | ----------- | ---------- | ----------- |
 | pro_name    | string     | null: false |
 | price       | integer    | null: false |
-| explaination| string     | null: false |
+| explaination| text       | null: false |
 | image       | string     | null: false |
 | user        | reference  | null: false, foreign_key: true |
-| category    | string     | null: false |
-| condition   | string     | null: false |
-| deli_money  | string     | null: false |
-| prefecture  | string     | null: false |
-| deli_time   | string     | null: false |
+| category_id | string     | null: false |
+| condition_id| string     | null: false |
+| deli_money_id| integer   | null: false |
+| prefecture_id| string    | null: false |
+| deli_time_id| string     | null: false |
 
 ### Association
 
 - has_many   :comments
 - belongs_to :users
 - has_many   :favorites
-- has_one    :buying
+- has_many   :buying
 
 
 ## comments テーブル
@@ -49,7 +53,7 @@
 | --------- | ---------- | ----------- |
 | user      | reference  | null: false, foreign_key: true |
 | item      | reference  | null: false, foreign_key: true |
-| text      | stirng     | null: false |
+| text      | text       | null: false |
 
 ### Association
 
@@ -80,7 +84,7 @@
 ### Association
 
 - belongs_to :users
-- belongs_to :addresses
+- has_one    :addresses
 - belongs_to :items
 
 
@@ -88,17 +92,17 @@
 
 | Column    | Type       | Options     |
 | --------- | ---------- | ----------- |
-| prefecture| string     | null: false, foreign_key: true |
+| prefecture_id| string     | null: false, foreign_key: true |
 | city      | string     | null: false |
-| postal_num| integer    | null: false |
-| house_num | integer    | null: false |
+| postal_num| string     | null: false |
+| house_num | string     | null: false |
 | building  | string     |             |
 | tel_num   | integer    | null: false |
 
 
 ### Association
 
-- has_one :buying
+- belongs_to :buying
 
 
 
