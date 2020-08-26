@@ -6,8 +6,11 @@
 
 | Column    | Type       | Options     |
 | --------- | ---------- | ----------- |
-| name      | string     | null: false |
+| nickname  | string     | null: false |
 | email     | string     | null: false |
+| password  | string     | null: false |
+| name      | string     | null: false |
+| birthday  | integer    | null: false |
 
 ### Association
 
@@ -26,6 +29,11 @@
 | explaination| string     | null: false |
 | image       | string     | null: false |
 | user        | reference  | null: false, foreign_key: true |
+| category    | string     | null: false |
+| condition   | string     | null: false |
+| deli_money  | string     | null: false |
+| prefecture  | string     | null: false |
+| deli_time   | string     | null: false |
 
 ### Association
 
@@ -68,8 +76,6 @@
 | --------- | ---------- | ----------- |
 | user      | reference  | null: false, foreign_key: true |
 | item      | reference  | null: false,foreign_key: true |
-| address   | reference  | null: false,foreign_key: true |
-| cre_card  | integer    | null: false |
 
 ### Association
 
@@ -82,7 +88,13 @@
 
 | Column    | Type       | Options     |
 | --------- | ---------- | ----------- |
-| address   | string     | null: false, foreign_key: true |
+| prefecture| string     | null: false, foreign_key: true |
+| city      | string     | null: false |
+| postal_num| integer    | null: false |
+| house_num | integer    | null: false |
+| building  | string     |             |
+| tel_num   | integer    | null: false |
+
 
 ### Association
 
