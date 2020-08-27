@@ -94,7 +94,7 @@
 | --------- | ---------- | ----------- |
 | prefecture_id| integer | null: false |
 | city      | string     | null: false |
-| postal_num| string     | null: false |
+| postal_code|string    | null: false |
 | house_num | string     | null: false |
 | building  | string     |             |
 | tel_num   | integer    | null: false |
