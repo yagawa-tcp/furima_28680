@@ -21,7 +21,7 @@
 - has_many   :items
 - has_many   :favorites
 - has_many   :comments
-- has_one    :buying
+- has_many   :buying
 
 
 ## items テーブル
@@ -33,18 +33,18 @@
 | explaination| text       | null: false |
 | image       | string     | null: false |
 | user        | reference  | null: false, foreign_key: true |
-| category_id | string     | null: false |
-| condition_id| string     | null: false |
+| category_id | integer    | null: false |
+| condition_id| integer    | null: false |
 | deli_money_id| integer   | null: false |
-| prefecture_id| string    | null: false |
-| deli_time_id| string     | null: false |
+| prefecture_id| integer   | null: false |
+| deli_time_id| integer    | null: false |
 
 ### Association
 
 - has_many   :comments
 - belongs_to :users
 - has_many   :favorites
-- has_many   :buying
+- has_one    :buying
 
 
 ## comments テーブル
@@ -92,13 +92,13 @@
 
 | Column    | Type       | Options     |
 | --------- | ---------- | ----------- |
-| prefecture_id| string     | null: false, foreign_key: true |
+| prefecture_id| integer | null: false |
 | city      | string     | null: false |
 | postal_num| string     | null: false |
 | house_num | string     | null: false |
 | building  | string     |             |
 | tel_num   | integer    | null: false |
-
+| buying    | reference  | null: false, foreign_key: true|
 
 ### Association
 
