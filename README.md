@@ -13,7 +13,6 @@
 | family_name| string     | null: false |
 | first_huri| string     | null: false |
 | family_huri| string     | null: false |
-
 | birthday  | date       | null: false |
 
 ### Association
