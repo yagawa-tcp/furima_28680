@@ -5,9 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   with_options presence: true do
-    validates :nickname, format: { with: , /\A[ぁ-んァ-ン一-龥]/}
-    validates :first_name, format: { with: , /\A[ぁ-んァ-ン一-龥]/}
-    validates :family_name, format: { with: , /\A[ぁ-んァ-ン一-龥]/}
+    validates :nickname, format: { with: /\A[ぁ-んァ-ン一-龥]/}
+    validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/}
+    validates :family_name, format: { with: /\A[ぁ-んァ-ン一-龥]/}
     validates :first_huri, format: { with: /\A[ァ-ヶー－]+\z/}
     validates :family_huri, format: { with: /\A[ァ-ヶー－]+\z/}
     validates :birthday
