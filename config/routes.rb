@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-# get 'sign_in(new_user_session)  sessions#new
-
+get 'toppage/index', to: 'items/index#index'
+get 'users/sign_in', to: 'devise/sessions#new'
+get 'users/sign_up', to: 'devise/registrations#new'
+get 'items/registration', to: 'items/new#new'
 
 end
