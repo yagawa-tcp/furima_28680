@@ -5,12 +5,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @users = User.new
+  
   end
 
 
   def create
-    @users = User.create
+ 
   end
 
   def move_to_sign_in
