@@ -27,25 +27,50 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
+      it "emailに＠が含まれていないと登録できない" do
+        @user.email = 'testtestgmail.com'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
       it "first_nameが半角だと登録できない" do
         @user.first_name = 'ﾀﾅｶ' 
         @user.valid?
         expect(@user.errors.full_messages).to include("First name is invalid")
+      end
+      it "first_nameが空だと登録できない" do
+        @user.first_name = '' 
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name can't be blank")
       end
       it "family_nameが半角だと登録できない" do
         @user.family_name = 'ﾀﾛｳ' 
         @user.valid?
         expect(@user.errors.full_messages).to include("Family name is invalid")
       end
+      it "family_nameが空だと登録できない" do
+        @user.family_name = '' 
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family name can't be blank")
+      end
       it "first_huriが半角だと登録できない" do
         @user.first_huri = 'ﾀﾅｶ' 
         @user.valid?
         expect(@user.errors.full_messages).to include("First huri is invalid")
       end
+      it "first_huriが空だと登録できない" do
+        @user.first_huri = '' 
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First huri can't be blank")
+      end
       it "family_huriが半角だと登録できない" do
         @user.family_huri = 'ﾀﾛｳ' 
         @user.valid?
         expect(@user.errors.full_messages).to include("Family huri is invalid")
+      end
+      it "family_huriが空だと登録できない" do
+        @user.family_huri = '' 
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family huri can't be blank")
       end
       it "重複したemailが存在する場合登録できない" do
         @user.save
@@ -79,7 +104,7 @@ describe User do
         @user.birthday = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday is invalid")
-      end
+      end       
     end
   end
 end
