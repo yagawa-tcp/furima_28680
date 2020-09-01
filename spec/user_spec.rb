@@ -68,7 +68,7 @@ describe User do
         @user.password = 'testtest'
         @user.password_confirmation = 'testtest'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password must use alphabet & number")
+        expect(@user.errors.full_messages).to include()
       end
       it "passwordが存在してもpassword_confirmationが空では登録できない" do
         @user.password_confirmation = ""
@@ -78,7 +78,7 @@ describe User do
       it "birthdayが空だと登録できない" do
         @user.birthday = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("")
+        expect(@user.errors.full_messages).to include("Birthday is invalid")
       end
     end
   end
