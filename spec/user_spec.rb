@@ -27,6 +27,7 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
+      # 追加部分↓
       it "emailに＠が含まれていないと登録できない" do
         @user.email = 'testtestgmail.com'
         @user.valid?
@@ -37,6 +38,7 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name is invalid")
       end
+      # 追加部分↓
       it "first_nameが空だと登録できない" do
         @user.first_name = '' 
         @user.valid?
@@ -47,6 +49,7 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Family name is invalid")
       end
+      # 追加部分↓
       it "family_nameが空だと登録できない" do
         @user.family_name = '' 
         @user.valid?
@@ -57,6 +60,7 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("First huri is invalid")
       end
+      # 追加部分↓
       it "first_huriが空だと登録できない" do
         @user.first_huri = '' 
         @user.valid?
@@ -67,6 +71,7 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Family huri is invalid")
       end
+      # 追加部分↓
       it "family_huriが空だと登録できない" do
         @user.family_huri = '' 
         @user.valid?
