@@ -14,8 +14,8 @@
 
     <% if user_signed_in? %>
       <div class="user_nav">
-        <%= link_to "toppage_index_path", user_name , class: "post" %>
-        <%= link_to "ログアウト", destroy_user_session_path, class: "post" %>
+        <%= link_to current_user.nickname ,toppage_index_path, class: "post" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "post" %>
 
       </div>
     <% else %>

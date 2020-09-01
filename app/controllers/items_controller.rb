@@ -5,12 +5,9 @@ class ItemsController < ApplicationController
   end
 
   def new
-  
   end
 
-
   def create
- 
   end
 
   def move_to_sign_in
