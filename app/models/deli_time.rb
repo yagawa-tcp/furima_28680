@@ -1,0 +1,2 @@
+class DeliTime < ApplicationRecord
+end
