@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  # beofre_action :move_to_sign_in, except: [:index]
+  before_action :move_to_sign_in, except: [:index]
 
   def index
   end

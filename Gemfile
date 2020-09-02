@@ -66,3 +66,5 @@ gem 'devise'
 gem 'active_hash'
 
 gem 'pry-rails'
+
+gem 'active_hash'

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 get 'toppage/index', to: 'items/index#index'
 get 'items/registration', to: 'items/new#new'
+post 'items/registration', to: 'items/new#create'
 end
