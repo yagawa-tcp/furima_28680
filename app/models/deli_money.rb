@@ -1,0 +1,2 @@
+class DeliMoney < ApplicationRecord
+end
