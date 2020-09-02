@@ -33,27 +33,27 @@ require 'rails_helper'
           expect(@item.errors.full_messages).to include("Explanation can't be blank")
         end
         it "category_idが空だと登録できない" do
-          @item.category_id = '' 
+          @item.category_id = '---' 
           @item.valid?
           expect(@item.errors.full_messages).to include("Category id can't be blank")
         end
         it "condition_idが空だと登録できない" do
-          @item.conditon_id = '' 
+          @item.conditon_id = ''--- 
           @item.valid?
           expect(@item.errors.full_messages).to include("Condition id can't be blank")
         end
         it "deli_money_idが空だと登録できない" do
-          @item.deli_money_id = '' 
+          @item.deli_money_id = ''--- 
           @item.valid?
           expect(@item.errors.full_messages).to include("Deli money can't be blank")
         end
         it "prefecture_idが空では登録できない" do
-          @item.prefecture_id = ''
+          @item.prefecture_id = '---'
           @item.valid?
           expect(@item.errors.full_messages).to include("Prefecture id can't be blank")
         end
         it "deli_time_idが空だと登録できない" do
-          @item.deli_money_id = ''
+          @item.deli_money_id = '---'
           @item.valid?
           expect(@item.errors.full_messages).to include("Deli time can't be blank")
         end    

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 get 'toppage/index', to: 'items/index#index'
 get 'items/registration', to: 'items/new#new'
 post 'items/registration', to: 'items/new#create'
+get 'items/:id', to: 'items#checked'
 end
