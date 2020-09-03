@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      index.new
+      render :new
   end
 
   def move_to_sign_in
