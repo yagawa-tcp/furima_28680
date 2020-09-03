@@ -1,6 +1,10 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category, :condition, :deli_money, :deli_time, :prefecture
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :deli_money
+  belongs_to_active_hash :deli_time
+  belongs_to_active_hash :prefecture
   has_one_attached :image
 
 
