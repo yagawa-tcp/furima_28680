@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :pro_name,    format: { with: /\A[ぁ-んァ-ン一-龥]+\z/} 
     validates :explanation, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/}
-    validates :price,       format: { with: /\A[0-9]+\z/ }
+    validates :price,       format: { with: /\A[0-9]+\z/ }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" }  
     validates :category_id, :condition_id, :deli_money, :deli_time, :prefecture, numericality: { other_than: 1 }
   end
 

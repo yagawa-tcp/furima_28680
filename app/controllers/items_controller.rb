@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  # before_action :move_to_sign_in, except: [:index]
+  # before_action :move_to_sign_in, only: [:new, :create]
 
   def index
   end
@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new
+    @item = Item.create(registration_params)
     if @item.save
       redirect_to root_path
     else
@@ -21,12 +21,13 @@ class ItemsController < ApplicationController
       redirect_to action: :new
     end 
   end
+
 end
 
   private
 
   def registration_params
-    params.require(:item).permit(:pro_name, :explanation, :image, :category_id, :condition_id, :deli_money, :deli_time, :prefecture, :price)
+    params.require(:item).permit(:pro_name, :explanation, :image, :category_id, :condition_id, :deli_money, :deli_time, :prefecture, :price).merge(user_id: current_user.id)
   end
 
 end
