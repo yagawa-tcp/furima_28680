@@ -12,11 +12,13 @@ class Item < ApplicationRecord
   has_one    :buying
 
 
+  with_options presence: true do
+    validates :image     
+    validates :pro_name,       length: { maximum: 40 }
+    validates :explanation   
+    validates :price,          format: { with: /\A[0-9]+\z/ }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" } 
+    end
 
-    validates :image,          presence: true 
-    validates :pro_name,       presence: true, length: { maximum: 40 }
-    validates :explanation,    presence: true 
-    validates :price,          format: { with: /\A[0-9]+\z/ }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" }  
     validates :category_id, :condition_id, :deli_money_id, :deli_time_id, :prefecture_id, numericality: { other_than: 1 }
 
 
