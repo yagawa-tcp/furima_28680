@@ -2,6 +2,8 @@ require 'rails_helper'
   describe Item do
     before do
       @item = FactoryBot.build(:item)
+      @item.image = fixture_file_upload("spec/factories/testimage/test.jpg")
+      @user = FactoryBot.build(:user)
     end
   
     describe '商品出品登録' do
@@ -13,9 +15,9 @@ require 'rails_helper'
   
       context '出品登録がうまくいかないとき' do
         it "imageが空だと登録できない" do
-          @item.image = ''
+          @item.image = nil
           @item.valid?
-          expect(@item.errors.full_messages).to include("Image is invalid")
+          expect(@item.errors.full_messages).to include("Image can't be blank")
         end
         it "pro_nameが空では登録できない" do
           @item.pro_name = ''
@@ -25,7 +27,7 @@ require 'rails_helper'
         it "pro_nameが40文字を超えると登録できない" do
           @item.pro_name = '01234567890123456789012345678901234567890'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Pro name is too long(maximum is 40 characters")
+          expect(@item.errors.full_messages).to include("Pro name is too long (maximum is 40 characters)")
         end
         it "explanationが空だと登録できない" do
           @item.explanation = '' 
@@ -33,48 +35,48 @@ require 'rails_helper'
           expect(@item.errors.full_messages).to include("Explanation can't be blank")
         end
         it "category_idが空だと登録できない" do
-          @item.category_id = '---' 
+          @item.category_id = '1' 
           @item.valid?
-          expect(@item.errors.full_messages).to include("Category id can't be blank")
+          expect(@item.errors.full_messages).to include("Category must be other than 1")
         end
         it "condition_idが空だと登録できない" do
-          @item.conditon_id = ''--- 
+          @item.condition_id = '1' 
           @item.valid?
-          expect(@item.errors.full_messages).to include("Condition id can't be blank")
+          expect(@item.errors.full_messages).to include("Condition must be other than 1")
         end
         it "deli_money_idが空だと登録できない" do
-          @item.deli_money_id = ''--- 
+          @item.deli_money_id = '1' 
           @item.valid?
-          expect(@item.errors.full_messages).to include("Deli money can't be blank")
+          expect(@item.errors.full_messages).to include("Deli money must be other than 1")
         end
         it "prefecture_idが空では登録できない" do
-          @item.prefecture_id = '---'
+          @item.prefecture_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Prefecture id can't be blank")
+          expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
         end
         it "deli_time_idが空だと登録できない" do
-          @item.deli_money_id = '---'
+          @item.deli_money_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Deli time can't be blank")
+          expect(@item.errors.full_messages).to include("Deli money must be other than 1")
         end    
         it "priceが空だと登録できない" do
           @item.price = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price can't be blank")
+          expect(@item.errors.full_messages).to include("Price is out of setting range")
         end      
         it "priceが¥300以下だと登録できない" do
           @item.price = '299'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price is invalid")
+          expect(@item.errors.full_messages).to include("Price is out of setting range")
         end
         it "priceが¥9,999,999以上だと登録できない" do
           @item.price = '10000000'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Price is invalid")
+          expect(@item.errors.full_messages).to include("Price is out of setting range")
         end        
       end
     end
   end
 
 
-end
+

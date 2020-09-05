@@ -18,10 +18,10 @@ function calc (){
     // double Math.celi(taxvalue)
     tax.innerHTML = taxvalue;
   // profitを求める計算式を入力
-    const profitvalue = (pricevalue - tax) ;
+    const profitvalue = (pricevalue - taxvalue) ;
     profit.innerHTML = profitvalue;
 
-  }
+  })
 }
 
 window.addEventListener("load", calc);
