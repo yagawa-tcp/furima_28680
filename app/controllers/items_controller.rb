@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  # before_action :move_to_index, only: [:new, :create]
+  # before_action :move_to_index, only: [:new, :create]（備忘録として残します）
   before_action :authenticate_user!, except: [:index]
 
   def index
@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  # def move_to_index
+  # def move_to_index（備忘録として残します）
   #   unless user_signed_in?
   #     redirect_to action: :index
   #   end 

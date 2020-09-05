@@ -15,7 +15,6 @@ function calc (){
   // taxを求める計算式を入力(taxvalueの中身を規程してから四捨五入し、taxに渡す)
     const pricevalue = price.value;
     const taxvalue = Math.ceil(pricevalue * 0.1);
-    // double Math.celi(taxvalue)
     tax.innerHTML = taxvalue;
   // profitを求める計算式を入力
     const profitvalue = (pricevalue - taxvalue) ;

@@ -73,6 +73,11 @@ require 'rails_helper'
           @item.price = '10000000'
           @item.valid?
           expect(@item.errors.full_messages).to include("Price is out of setting range")
+        end
+        it "priceが半角数字意外だと登録できない" do
+          @item.price = '５００００'
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price is out of setting range")
         end        
       end
     end
