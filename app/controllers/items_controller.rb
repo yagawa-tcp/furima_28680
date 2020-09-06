@@ -2,7 +2,11 @@ class ItemsController < ApplicationController
   # before_action :move_to_index, only: [:new, :create]（備忘録として残します）
   before_action :authenticate_user!, except: [:index]
 
+
+
   def index
+    query = "SELECT * FROM items"
+    @items = Item.find_by_sql(query)
   end
 
   def new
