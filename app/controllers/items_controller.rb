@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   # before_action :move_to_index, only: [:new, :create]（備忘録として残します）
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show] 
 
 
 
@@ -10,6 +10,10 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   def create
