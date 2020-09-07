@@ -16,8 +16,22 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   def create
-    @item = Item.create(registration_params)
+    @item = Item.create(item_params)
     if @item.save
       redirect_to root_path
     else
@@ -36,7 +50,7 @@ class ItemsController < ApplicationController
 
   private
 
-  def registration_params
+  def item_params
     params.require(:item).permit(:pro_name, :explanation, :category_id, :condition_id, :deli_money_id, :deli_time_id, :prefecture_id, :price, :image).merge(user_id: current_user.id)
   end
 
