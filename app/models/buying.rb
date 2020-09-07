@@ -1,8 +1,8 @@
 class Buying < ApplicationRecord
 
-  belongs_to :users
-  has_one    :addresses
-  belongs_to :items
+  belongs_to :user
+  has_one    :addresse
+  belongs_to :item
 
 
   with_options presence: true do
