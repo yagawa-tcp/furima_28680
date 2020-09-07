@@ -1,7 +1,7 @@
 class Buying < ApplicationRecord
 
   belongs_to :user
-  has_one    :addresse
+  has_one    :address
   belongs_to :item
 
 
