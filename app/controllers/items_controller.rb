@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
   def index
     query = "SELECT * FROM items"
     @items = Item.find_by_sql(query)
-  
   end
 
   def new
@@ -38,7 +37,5 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:pro_name, :explanation, :category_id, :condition_id, :deli_money_id, :deli_time_id, :prefecture_id, :price, :image).merge(user_id: current_user.id)
   end
 
-  def check_sold_out
-    params.require(:buying).permit(:item.pro_name)
-  end
+ 
 end

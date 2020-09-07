@@ -5,9 +5,9 @@ class Buying < ApplicationRecord
   belongs_to :items
 
 
-  with_options presence: true, foreign_key: true do
-    validates :user        
-    validates :item       
+  with_options presence: true do
+    validates :user_id        
+    validates :item_id       
   end
 
 
