@@ -4,7 +4,7 @@ class BuyingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @buy
+    @buying = Buying.new
     if user_signed_in? && current_user.id == @item.user_id
       redirect_to root_path
     elsif @item.buying.present?
@@ -13,10 +13,16 @@ class BuyingsController < ApplicationController
   end
 
   def create
+    @buying = Buying.new(buying_params)
+    @address = Address.new(address_params)
     if @buying.create
       redirect_to root_path
+    else
+      render :index
     end
   end
+
+  
 
   private
 
