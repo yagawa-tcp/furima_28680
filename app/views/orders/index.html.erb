@@ -5,10 +5,6 @@
     <h1 class='transaction-title-text'>
       購入内容の確認
     </h1>
-<%# <%= form_with model: @buying, method: :put, url: buyings_path, class: 'buying_item', local: true do |f| %> %>
-
-<%# <%= render 'shared/error_messages', model: f.object %> %>
-
     <%# 購入内容の表示 %>
     <div class='buy-item-info'>
       <%= image_tag "item-sample.png", class: 'buy-item-img' %>
@@ -17,7 +13,7 @@
           <%= "商品説明" %>
         </h2>
         <div class='buy-item-price'>
-          <p class='item-price-text'>¥<%= "99999" %></p>
+          <p class='item-price-text'>¥<%= 999,999,999 %></p>
           <p class='item-price-sub-text'>（税込）送料込み</p>
         </div>
       </div>
@@ -92,7 +88,7 @@
           <label class="form-text">都道府県</label>
           <span class="indispensable">必須</span>
         </div>
-         <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"prefecture"}) %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
