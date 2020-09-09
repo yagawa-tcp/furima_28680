@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   # before_action :move_to_index, only: [:new, :create]（備忘録として残します）
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :finder, only: [:show, :edit, :update]
+  before_action :finder, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all.order("created_at DESC")
@@ -29,6 +29,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    if @item.delete
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+
 
   # def move_to_index（備忘録として残します）
   #   unless user_signed_in?
@@ -45,7 +53,7 @@ class ItemsController < ApplicationController
   end
 
   def finder
-    Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
  
