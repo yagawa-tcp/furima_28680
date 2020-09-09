@@ -1,6 +1,5 @@
 class BuyingsController < ApplicationController
 
-<<<<<<< HEAD
   before_action :finder, only: [:index]
   before_action :authenticate_user!
 
@@ -25,7 +24,5 @@ class BuyingsController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-=======
->>>>>>> parent of d41d79d... first_commit
 
 end
