@@ -5,9 +5,9 @@
     <h1 class='transaction-title-text'>
       購入内容の確認
     </h1>
-<%# <%= form_with model: @buying, method: :put, url: buyings_path, class: 'buying_item', local: true do |f| %> %>
-
-<%# <%= render 'shared/error_messages', model: f.object %> %>
+<%= form_with model: @buying, url: item_buyings_path,method: :post, class: 'buying_item', local: true do |f| %>
+<%= form_with model: @user, url: user_registration_path, method: :post,  class: 'registration-main', local: true do |f| %>
+<%# <%= render 'shared/error_messages', model: f.object %> 
 
     <%# 購入内容の表示 %>
     <div class='buy-item-info'>

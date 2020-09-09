@@ -4,6 +4,7 @@ class BuyingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    # @address = Address.find(params[:id])
     if user_signed_in? && current_user.id == @item.user_id
       redirect_to root_path
     elsif @item.buying.present?
