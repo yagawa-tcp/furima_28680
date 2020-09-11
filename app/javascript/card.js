@@ -1,32 +1,38 @@
 const pay = () => {
-  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);  // PAY.JPテスト公開鍵
-  const form = document.getElementById("charge-form");
+  Payjp.setPublicKey('pk_test_dcca1acafd2ff2bc22e9e428');  // PAY.JPテスト公開鍵
+  const form = document.getElementById("buying_credit");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
  
-    const formResult = document.getElementById("charge-form");
+    const formResult = document.getElementById("buying_credit");
     const formData = new FormData(formResult);
  
     const card = {
-      number: formData.get("number"),
-      cvc: formData.get("cvc"),
-      exp_month: formData.get("exp_month"),
-      exp_year: `20${formData.get("exp_year")}`,
+      number: formData.get("buyer_data[number]"),
+      cvc: formData.get("buyer_data[cvc]"]),
+      exp_month: formData.get("buyer_data[exp_month]"),
+      exp_year: `20${formData.get("buyer_data[exp_year]")}`,
     };
+    console.log(card);
+
+
     Payjp.createToken(card, (status, response) => {
+      // console.log(status)
+
+
       if (status == 200) {
         const token = response.id;
-        const renderDom = document.getElementById("charge-form");
+        const renderDom = document.getElementById("buying_credit");
         const tokenObj = `<input value=${token} type="hidden" name='token'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
-      document.getElementById("number").removeAttribute("name");
-      document.getElementById("cvc").removeAttribute("name");
-      document.getElementById("exp_month").removeAttribute("name");
-      document.getElementById("exp_year").removeAttribute("name");
+      document.getElementById("buyer_data[number]").removeAttribute("name");
+      document.getElementById("buyer_data[cvc]").removeAttribute("name");
+      document.getElementById("buyer_data[exp_month]").removeAttribute("name");
+      document.getElementById("buyer_data[exp_year]").removeAttribute("name");
  
-      document.getElementById("charge-form").submit();
-      document.getElementById("charge-form").reset();
+      document.getElementById("buying_credit").submit();
+      document.getElementById("buying_credit").reset();
     });
   });
  };
