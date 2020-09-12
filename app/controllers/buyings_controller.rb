@@ -14,6 +14,7 @@ class BuyingsController < ApplicationController
 
   def create
     @buying = BuyerData.new(buyer_params)
+    # binding.pry
     if @buying.valid? 
       pay_item
       @buying.save
@@ -32,13 +33,13 @@ class BuyingsController < ApplicationController
   end
 
   def buyer_params
-    params.require(:buyer_data).permit(:prefecture_id, :city, :postal_code, :house_num, :building, :tel_num, :buying_id, :price, :item_id, :user_id, :token)
+    params.require(:buyer_data).permit(:prefecture_id, :city, :postal_code, :house_num, :building, :tel_num, :buying_id, :token).merge(user_id: current_user.id, item_id: @item.id)
   end
 
   def pay_item
     Payjp.api_key = 'sk_test_cd4fcf82fe5af78bb0b0c7f1'
     Payjp::Charge.create(
-      amount: buyer_params[@item.price],  # 商品の値段
+      amount: @item.price,  # 商品の値段
       card: buyer_params[:token],    # カードトークン
       currency:'jpy'                 # 通貨の種類(日本円)
     )

@@ -1,7 +1,9 @@
 const pay = () => {
   Payjp.setPublicKey('pk_test_dcca1acafd2ff2bc22e9e428');  // PAY.JPテスト公開鍵
   const form = document.getElementById("buying_credit");
-  form.addEventListener("submit", (e) => {
+  console.log(form)
+  form.addEventListener("submit", function (e) {
+    
     e.preventDefault();
  
     const formResult = document.getElementById("buying_credit");
@@ -9,27 +11,27 @@ const pay = () => {
  
     const card = {
       number: formData.get("buyer_data[number]"),
-      cvc: formData.get("buyer_data[cvc]"]),
+      cvc: formData.get("buyer_data[cvc]"),
       exp_month: formData.get("buyer_data[exp_month]"),
       exp_year: `20${formData.get("buyer_data[exp_year]")}`,
     };
-    console.log(card);
-
+    
 
     Payjp.createToken(card, (status, response) => {
+      // debugger
       // console.log(status)
 
 
       if (status == 200) {
         const token = response.id;
         const renderDom = document.getElementById("buying_credit");
-        const tokenObj = `<input value=${token} type="hidden" name='token'>`;
+        const tokenObj = `<input value=${token} type="text" name='buyer_data[token]'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
-      document.getElementById("buyer_data[number]").removeAttribute("name");
-      document.getElementById("buyer_data[cvc]").removeAttribute("name");
-      document.getElementById("buyer_data[exp_month]").removeAttribute("name");
-      document.getElementById("buyer_data[exp_year]").removeAttribute("name");
+      document.getElementById("card-number").removeAttribute("name");
+      document.getElementById("card-cvc").removeAttribute("name");
+      document.getElementById("card-exp-month").removeAttribute("name");
+      document.getElementById("card-exp-year").removeAttribute("name");
  
       document.getElementById("buying_credit").submit();
       document.getElementById("buying_credit").reset();
