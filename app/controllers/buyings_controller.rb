@@ -14,7 +14,6 @@ class BuyingsController < ApplicationController
 
   def create
     @buying = BuyerData.new(buyer_params)
-    # binding.pry
     if @buying.valid? 
       pay_item
       @buying.save
@@ -37,7 +36,7 @@ class BuyingsController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = 'sk_test_cd4fcf82fe5af78bb0b0c7f1'
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,  # 商品の値段
       card: buyer_params[:token],    # カードトークン

@@ -6,9 +6,16 @@ RSpec.describe BuyerData, type: :model do
       @buying = FactoryBot.build(:buyer_data)
     end
 
+    context '商品購入がうまくいくとき' do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@buying).to be_valid
     end
+    it 'buildingは空でも保存できること' do
+      @buying.building = ""
+      expect(@buying).to be_valid
+    end
+
+    context '商品購入がうまくいかないとき' do
     it 'カード情報が空、もしくは不正なものだと保存できないこと' do
       @buying.token = nil
       @buying.valid?
@@ -38,10 +45,6 @@ RSpec.describe BuyerData, type: :model do
       @buying.house_num = nil
       @buying.valid?
       expect(@buying.errors.full_messages).to include("House num can't be blank")
-    end
-    it 'buildingは空でも保存できること' do
-      @buying.building = ""
-      expect(@buying).to be_valid
     end
     it 'tel_numが空だと保存できないこと' do
       @buying.tel_num = nil
