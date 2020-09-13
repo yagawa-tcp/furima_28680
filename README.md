@@ -83,7 +83,7 @@
 ### Association
 
 - belongs_to :users
-- has_one    :addresses
+- has_one    :address
 - belongs_to :items
 
 
