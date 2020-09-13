@@ -5,4 +5,3 @@ class Address < ApplicationRecord
 
   
 end
-
