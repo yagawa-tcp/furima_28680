@@ -1,0 +1,34 @@
+ja:
+ activerecord:
+   attributes:
+    user:
+      nickname: ニックネーム
+      first_name: 名前（漢字）
+      family_name: 苗字（漢字）
+      first_huri: 名前（フリガナ）
+      family_huri: 苗字（フリガナ）
+      birthday: 誕生日
+    item:
+      text: テキスト
+      image: 画像
+      pro_name: 商品名
+      explanation: 商品の説明
+      price: 価格
+      prices out of setting ranges: 
+      category: カテゴリー
+      condition: 状態
+      deli_money: 配送料
+      deli_time: 発送までの日数
+      prefecture: 発送元の地域
+
+ activemodel:
+  attributes:
+    buyer_data:
+      token: クレジットカード情報
+      city: 市区町村情報
+      postal_code: 郵便番号
+      house_num: 番地情報
+      tel_num: 電話番号
+      prefecture_id: 発送元の地域
+
+    

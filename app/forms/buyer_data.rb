@@ -13,7 +13,7 @@ class BuyerData
     validates :tel_num,        length: { maximum: 11 }, format: {with: /\d/}
   end
 
-  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :prefecture_id, numericality: { other_than: 1, message: " を指定してください" }
 
   def save
     buying = Buying.create(item_id: item_id, user_id: user_id)
